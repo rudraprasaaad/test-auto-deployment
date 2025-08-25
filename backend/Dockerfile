@@ -6,8 +6,6 @@ RUN corepack enable
 FROM base AS prod-deps
 WORKDIR /app
 
-RUN npm install -g pnpm@10.14.0
-
 COPY pnpm-lock.yaml package.json ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
 	pnpm install --prod --frozen-lockfile
@@ -18,7 +16,7 @@ COPY pnpm-lock.yaml package.json tsconfig.json ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
 	pnpm install --frozen-lockfile
 COPY src ./src
-RUN pnpm run build
+RUN pnpm build
 
 
 FROM gcr.io/distroless/nodejs20-debian11
