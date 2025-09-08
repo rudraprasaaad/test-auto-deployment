@@ -12,6 +12,13 @@ app.post("/", (req, res) => {
   });
 });
 
+app.post("/health", (req, res) => {
+  const body = req.body || "Health is good";
+  res.status(201).json({
+    msg: body,
+  });
+});
+
 app.listen(3000, () => {
   console.log(`Server listening at 3000`);
 });
