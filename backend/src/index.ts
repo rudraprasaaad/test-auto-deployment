@@ -13,7 +13,7 @@ app.post("/", (req, res) => {
 });
 
 app.post("/health", (req, res) => {
-  const body = req.body || "Health is good";
+  const body = req.body || "Health is fine";
   res.status(201).json({
     msg: body,
   });
